@@ -20,7 +20,7 @@ function pickWord() {
   let randomIndex;
   let randomWord;
   
-  const resultElement = document.getElementById('result');
+  const resultElement = document.getElementById('bingo-board');
   
   // Reset font size and display loading effect
   resultElement.style.fontSize = "16px";
