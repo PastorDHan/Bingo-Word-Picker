@@ -1,12 +1,12 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Full height */
+  height: 100vh;
+  background-color: #f4f4f4;
 }
 
 .container {
@@ -22,10 +22,11 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 24px;
-  background: url('./bingo-background.jpg') center/cover; /* Make sure this path is correct */
+  background: url('bingo-background.jpg') no-repeat center center; /* Make sure this path is correct */
+  background-size: cover;
 }
 
-#pick-word-btn {
+#pick-word-btn, #submit-words {
   font-size: 24px;
   padding: 20px;
   cursor: pointer;
@@ -50,13 +51,7 @@ body {
 
 #word-input {
   margin-top: 10px;
-  padding: 10px;
-}
-
-#submit-words {
-  margin-left: 10px;
-  padding: 10px;
-  cursor: pointer;
+  padding: 100px;
 }
 
 h1 {
