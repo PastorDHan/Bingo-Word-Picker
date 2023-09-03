@@ -1,15 +1,21 @@
-const wordBank = [
-  "Nehemiah", "Jerusalem", "Prayer", "Walls", "Gates",
-  "Faithful", "Sin", "Rebuild", "God", "Trust",
-  "Exile", "Cyrus", "Persia", "Fast", "Leader",
-  "Destroyed", "Restoration", "Protection", "Enemies", "Mercy",
-  "Discouraged", "Guard", "Weapons", "Obedience", "Confess",
-  "Fasting", "Stone", "Consequence", "Dependence", "Sadness",
-  "Work", "Rescue", "Family", "Israel", "Task",
-  "Home", "Favor", "Listen", "Repent", "Love"
-];
+let wordBank = [];
 
-const pickedWords = new Set();
+let pickedWords = new Set();
+
+document.getElementById('submit-words').addEventListener('click', function() {
+  const inputVal = document.getElementById('word-input').value;
+  if (inputVal) {
+    wordBank = inputVal.split(',').map(word => word.trim());
+    pickedWords = new Set();  // Reset the picked words
+    alert('Word bank updated!');
+  }
+});
+
+document.getElementById('restart-btn').addEventListener('click', function() {
+  pickedWords = new Set();  // Reset the picked words
+  document.getElementById('bingo-board').innerText = '';  // Clear the board
+  alert('Game restarted!');
+});
 
 function pickWord() {
   if (pickedWords.size >= wordBank.length) {
