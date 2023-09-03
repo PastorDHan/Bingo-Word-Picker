@@ -1,37 +1,49 @@
-// Your 40-word bank
 const wordBank = [
-    "apple", "banana", "cat", "dog", "elephant",
-    "fish", "grape", "hat", "igloo", "jump",
-    "kite", "lion", "mouse", "nail", "octopus",
-    "pig", "queen", "rat", "snake", "tiger",
-    "umbrella", "violin", "wolf", "x-ray", "yak",
-    "zebra", "ant", "bat", "cow", "deer",
-    "eagle", "frog", "goat", "horse", "insect",
-    "jaguar", "kangaroo", "lemur", "monkey", "newt"
+  "Nehemiah", "Jerusalem", "Prayer", "Walls", "Gates",
+  "Faithful", "Sin", "Rebuild", "God", "Trust",
+  "Exile", "Cyrus", "Persia", "Fast", "Leader",
+  "Destroyed", "Restoration", "Protection", "Enemies", "Mercy",
+  "Discouraged", "Guard", "Weapons", "Obedience", "Confess",
+  "Fasting", "Stone", "Consequence", "Dependence", "Sadness",
+  "Work", "Rescue", "Family", "Israel", "Task",
+  "Home", "Favor", "Listen", "Repent", "Love"
 ];
 
-// Store picked words to avoid duplicates
 const pickedWords = new Set();
 
-// Pick a random word from the wordBank and display it
 function pickWord() {
-    if (pickedWords.size >= wordBank.length) {
-        alert('All words have been picked!');
-        return;
-    }
+  if (pickedWords.size >= wordBank.length) {
+    alert('All words have been picked!');
+    return;
+  }
 
-    let randomIndex;
-    let randomWord;
+  let randomIndex;
+  let randomWord;
+  
+  const resultElement = document.getElementById('result');
+  
+  // Reset font size and display loading effect
+  resultElement.style.fontSize = "16px";
+  let counter = 0;
+  let loadingInterval = setInterval(() => {
+    resultElement.innerText = wordBank[counter % wordBank.length];
+    counter++;
+  }, 100);
 
+  setTimeout(() => {
+    clearInterval(loadingInterval); // Stop the loading effect
+    
     do {
-        randomIndex = Math.floor(Math.random() * wordBank.length);
-        randomWord = wordBank[randomIndex];
+      randomIndex = Math.floor(Math.random() * wordBank.length);
+      randomWord = wordBank[randomIndex];
     } while (pickedWords.has(randomWord));
 
     pickedWords.add(randomWord);
-
-    document.getElementById('result').innerText = randomWord;
+    
+    // Capitalize the first letter and set font size to 100px
+    resultElement.innerText = randomWord.charAt(0).toUpperCase() + randomWord.slice(1);
+    resultElement.style.fontSize = "100px";
+  }, 3000);  // Stop after 3 seconds
 }
 
-// Attach event listener
 document.getElementById('pick-word-btn').addEventListener('click', pickWord);
